@@ -15,14 +15,14 @@ def psign(request):
         try:
             user_profile = UserProfile.objects.get(username = username)
         except UserProfile.DoesNotExist:
-            return render(request , 'patient_signIn.html' , {'error_message': 'Invalid username or password'})
+            return render(request , 'patient/sign_in.html' , {'error_message': 'Invalid username or password'})
         if user_profile.password == password:
             loggedIn = True
             return redirect('pdash')
         else:
-            return render(request , 'patient_signIn.html' , {'error_message': 'Invalid username or password'})
+            return render(request , 'patient/sign_in.html' , {'error_message': 'Invalid username or password'})
     else:
-        return render(request , 'patient_signIn.html')
+        return render(request , 'patient/sign_in.html')
 
 # this is pateint signu method also database entry using custom models 
 
@@ -42,9 +42,9 @@ def psugn(request):
         user_profile.save()
         return redirect('psign')
     else:
-        return render(request, 'patient_signUp.html')
+        return render(request, 'patient/sign_up.html')
 
 # this is patient dahsboard rendering function 
 
 def pdash(request):
-    return render(request , 'dashboard_p.html')
+    return render(request , 'patient/dashboard.html')
