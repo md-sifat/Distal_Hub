@@ -18,7 +18,7 @@ def psign(request):
             return render(request , 'patient_signIn.html' , {'error_message': 'Invalid username or password'})
         if user_profile.password == password:
             loggedIn = True
-            return redirect('home')
+            return redirect('pdash')
         else:
             return render(request , 'patient_signIn.html' , {'error_message': 'Invalid username or password'})
     else:
@@ -47,4 +47,4 @@ def psugn(request):
 # this is patient dahsboard rendering function 
 
 def pdash(request):
-    render(request , 'dashbaord_p.html')
+    return render(request , 'dashboard_p.html')

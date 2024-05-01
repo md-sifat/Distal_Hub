@@ -6,7 +6,7 @@ urlpatterns = [
     path('' , views.home , name = 'home'),
     path('psign/' , views.psign , name = 'psign'),
     path('psugn/' , views.psugn , name = 'psugn'),
-    path('pdash/' , views.psugn , name = 'pdash'),
+    path('pdash/' , views.pdash , name = 'pdash'),
     path('dsign/' , views.home , name = 'dsign'),
 
 ]
