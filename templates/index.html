@@ -1,0 +1,76 @@
+{% load static %}
+{% load admin_urls%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+<!-- Profile Section -->
+<div class="container mx-auto px-4 py-4 flex justify-between">
+    <div class="items-center ">
+        <!-- Profile Image (Replace with your image URL) -->
+        <img src={% static "img.jpg" %} alt="Profile Image" class="w-20 h-20 rounded-full">
+        <!-- Profile Name (Replace with your name) -->
+    </div>
+    <div>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full">
+            <a href={% url 'admin:index' %} >Admin Panel</a>
+        </button>
+    </div>
+</div>
+
+
+<!-- Logo Section -->
+<div class="container mx-auto px-4  text-center ">
+    <!-- Logo (Replace with your logo image URL) -->
+    <img src={% static "img.jpg" %} alt="Logo" class="w-40 mx-auto mb-8">
+    <h1 class="text-4xl font-semibold mb-10 ">Welcome to Distal Hub</h1>
+    <!-- Welcome Title -->
+    <!-- Buttons -->
+
+    <div class="flex justify-center mb-8 align-center">
+        <span class="text-2xl font-bold mr-3 my-3 px-5">I am a :</span>
+        <a href={% url "psign" %} class="bg-blue-500 hover:bg-blue-600 text-white text-1xl font-bold py-5 px-16 rounded-full mr-10">Patient</a>
+        <a href={% url "dsign" %} class="bg-green-500 hover:bg-green-600 text-white font-bold py-5 px-16 rounded-full mr-10">Doctor</a>
+    </div>
+
+    <!-- Services Section -->
+    <div class="text-center">
+        <h2 class="text-2xl font-semibold mb-4">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <!-- Service Box -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-lg font-semibold mb-2">Appointment</h3>
+                <p class="text-gray-700">Schedule appointments with ease.</p>
+            </div>
+            <!-- Service Box -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-lg font-semibold mb-2">Live Consultations</h3>
+                <p class="text-gray-700">Get live consultations from professionals.</p>
+            </div>
+            <!-- Service Box -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-lg font-semibold mb-2">Medical Records</h3>
+                <p class="text-gray-700">Access and manage your medical records.</p>
+            </div>
+            <!-- Service Box -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-lg font-semibold mb-2">Nearby Medical Center</h3>
+                <p class="text-gray-700">Find nearby medical centers and hospitals.</p>
+            </div>
+            <!-- Service Box -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-lg font-semibold mb-2">Instant Medical Support 24/7</h3>
+                <p class="text-gray-700">Get instant medical support round the clock.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
