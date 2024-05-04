@@ -1,11 +1,13 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect 
 from home.models import UserProfile
-# Create your views here.
 
-loggedIn = False
+# Create your views here.
 # this is homepage rendering function
 def home(request):
-    return render(request , 'index.html')
+    if request.session.get('loggedIn'):
+        return redirect(pdash)
+    else:
+        return render(request , 'index.html')
 
 # this is patient log in authentication custom 
 def psign(request):
@@ -17,7 +19,8 @@ def psign(request):
         except UserProfile.DoesNotExist:
             return render(request , 'patient/sign_in.html' , {'error_message': 'Invalid username or password'})
         if user_profile.password == password:
-            loggedIn = True
+            request.session['loggedIn']=True
+            request.session['username']=username
             return redirect('pdash')
         else:
             return render(request , 'patient/sign_in.html' , {'error_message': 'Invalid username or password'})
@@ -46,5 +49,19 @@ def psugn(request):
 
 # this is patient dahsboard rendering function 
 
+
+
 def pdash(request):
-    return render(request , 'patient/dashboard.html')
+    if request.session.get('loggedIn'):
+        username = request.session['username']
+        try:
+            user_profile = UserProfile.objects.get(username = username)
+            return render(request , 'patient/dashboard.html' , {'user_profile':user_profile})
+        except UserProfile.DoesNotExist:
+             return render(request, 'patient/dashboard.html', {'error_message': 'User profile not found'})
+    else:
+        return redirect('psign')
+
+def logout(request):
+    request.session['loggedIn']=False
+    return redirect(home)

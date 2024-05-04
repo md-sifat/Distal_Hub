@@ -1,1 +1,144 @@
-This is dashBoard
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Patient Dashboard</title>
+
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href={% static "dashboard_p.css" %}>
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined"></span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined"></span>
+        </div>
+        <div class="header-right">
+          
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <div class="c805" href="{% url "home" %}">
+                <span  class="material-icons-outlined">mood</span> Home
+                {% comment %} <button> <a ></a>  </button> {% endcomment %}
+            </div>
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">account_circle</span> Profile
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">library_books</span> Appointment
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+                <span class="material-icons-outlined">badge</span> Doctors
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">phone</span> Support
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">notifications</span> Notifications
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">poll</span> Records
+            </a>
+          </li>
+          <li class="sidebar-list-item" href = "{% url 'logout' %}">
+            <a href="{% url 'logout' %}">
+              <span class="material-icons-outlined">logout</span> Log Out
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+      
+
+      
+      <!-- Main -->
+    <main class="main-container bg-slate-500">
+        <!-- Welcome Section -->
+    <div class="container mx-auto px-4 py-8 text-center ">
+    <h1 class="text-3xl font-bold mb-4">HI, {{user_profile.username}}! <br> Welcome to Distal Hub </h1>
+    <!-- Achievement Boxes -->
+    <div class="flex justify-center flex-wrap mb-8">
+        <!-- Achievement Box 1 -->
+        <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 200px;">
+            <h2 class="text-lg font-semibold mb-2">Achievement 1</h2>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- Achievement Box 2 -->
+        <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 200px;">
+            <h2 class="text-lg font-semibold mb-2">Achievement 2</h2>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- Achievement Box 3 -->
+        <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 200px;">
+            <h2 class="text-lg font-semibold mb-2">Achievement 3</h2>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+    <!-- User Reviews Section -->
+    <h2 class="text-2xl font-semibold mb-4">User Reviews</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Review 1 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h3 class="text-lg font-semibold mb-2">User 1</h3>
+            <p class="text-gray-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+        </div>
+        <!-- Review 2 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h3 class="text-lg font-semibold mb-2">User 2</h3>
+            <p class="text-gray-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+        </div>
+        <!-- Review 3 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h3 class="text-lg font-semibold mb-2">User 3</h3>
+            <p class="text-gray-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+        </div>
+    </div>
+    </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+  </body>
+</html>
