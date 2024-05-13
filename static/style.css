@@ -1,0 +1,137 @@
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(247, 246, 252);
+    color: rgb(70, 71, 81);
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .right_side{
+    border: 2px solid #08655d;
+    box-shadow: 0px 0px 10px 0px #096e66;
+    width: 20%;
+    height: 100vh;
+    background-color:#0d9488;
+
+  }
+
+  .main{
+    width: 80%;
+    height: 100vh;
+  }
+
+  .material-icons-outlined {
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 30px;
+  }
+
+  .text-secondary {
+    color: rgb(70, 71, 81);
+  }
+  
+  .text-blue {
+    color: rgb(29, 38, 154);
+  }
+  
+  .background-blue {
+    background-color: rgb(29, 38, 154);
+  }
+  
+  .text-red {
+    color: rgb(213, 0, 0);
+  }
+  
+  .background-red {
+    background-color: rgb(213, 0, 0);
+  }
+  
+  .text-green {
+    color: rgb(46, 125, 50);
+  }
+  
+  .background-green {
+    background-color: rgb(46, 125, 50);
+  }
+  
+  .text-orange {
+    color: rgb(255, 111, 0);
+  }
+  
+  .background-orange {
+    background-color: rgb(255, 111, 0);
+  }
+
+
+
+
+  .sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 20px 20px;
+    margin-bottom: 30px;
+  }
+
+  .sidebar-title > span {
+    display: none;
+  }
+
+  .sidebar-brand {
+    margin-top: 15px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .sidebar-brand > .material-icons-outlined {
+    font-size: 50px;
+  }
+  .sidebar-list {
+    padding: 0;
+    margin-top: 15px;
+    list-style-type: none;
+  }
+
+  .sidebar-list-item {
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+  }
+  
+  .sidebar-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+
+  .sidebar-list-item > a {
+    text-decoration: none;
+    color: rgb(217, 215, 215);
+  }
+
+  
+  .sidebar-responsive {
+    /* display: inline !important; */
+    position: absolute;
+  }
+
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      ' header header header'
+      ' main main main';
+    height: 100vh;
+  }
+
+  .main-container{
+    display: flex;
+    flex-direction: col;
+  }
