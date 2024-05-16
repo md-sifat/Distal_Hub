@@ -101,6 +101,9 @@ def dsugn(request):
         if(DoctorProfile.objects.filter(serialno=serialno).exists()):
             return render(request , 'doctor/sign_up.html' , {'error_message': 'Invalid username or password'})
         else:
+            firstname = request.POST.get('firstname')
+            lastname = request.POST.get('lastname')
+            specialization = request.POST.get('specialization')
             email = request.POST.get('email')
             age = request.POST.get('age')
             blood_group = request.POST.get('blood_group')
@@ -109,7 +112,7 @@ def dsugn(request):
             password = request.POST.get('password')
             gender = request.POST.get('gender')
 
-            doctor_profile = DoctorProfile(serialno=serialno,email=email,age=age,blood_group=blood_group,phone_number=phone_number,location=location,password=password,gender=gender)
+            doctor_profile = DoctorProfile(serialno=serialno,firstname=firstname,lastname=lastname,specialization = specialization,email=email,age=age,blood_group=blood_group,phone_number=phone_number,location=location,password=password,gender=gender)
             doctor_profile.save()
             return redirect('dsign')    
     else:

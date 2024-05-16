@@ -2,49 +2,69 @@
 {% load static %}
 {% block content %}
 
-<div class="max-w-3xl mx-auto p-6">
-    <!-- Profile Picture, Name, and Bio Section -->
-    <div class="flex items-center mb-6">
-        <div class="w-20 h-20 rounded-full overflow-hidden">
-            <img src="{{ user_profile.img.url }}" alt="Profile Picture" class="w-full h-full object-cover">
+<div class="bg-gray-200 w-full h-full ">
+    <div class="max-w-3xl mx-auto p-6 ">
+        <!-- Profile Picture, Name, and Bio Section -->
+        <div class="flex items-center mb-6">
+            <div class="w-44 h-44  rounded-full overflow-hidden">
+                <img src="{{ user_profile.img.url }}" alt="Profile Picture" class="w-full h-full object-cover">
+            </div>
+    
+            <div class="ml-4 border-l-2 border-gray-500 pl-6 h-36 ">
+                <h1 class="text-3xl  font-mono">{{ user_profile.firstname }} {{ user_profile.lastname }}</h1>
+                <p class="text-gray-600 font-mono">{{ user_profile.aboutme }}</p>
+            </div>
         </div>
-
-        <div class="ml-4 border-l-2 border-gray-300 pl-4">
-            <h1 class="text-3xl font-bold">{{ user_profile.firstname }} {{ user_profile.lastname }}</h1>
-            <p class="text-gray-600">{{ user_profile.aboutme }}</p>
+        
+    
+    
+        
+        <!-- Personal Information Section -->
+        <div class="mb-6">
+            <h2 class="text-xl font-mono mb-4">Personal Information :</h2>
+            <ul class="grid grid-cols-2 gap-4">
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Username :</span> {{ user_profile.username }}
+                </li>
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Email :</span> {{ user_profile.email }}
+                </li>
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Location:</span> {{ user_profile.location }}
+                </li>
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Phone Number:</span> {{ user_profile.phone_number }}
+                </li>
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Blood Group:</span> {{ user_profile.blood_group }}
+                </li>
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Age:</span> {{ user_profile.age }}
+                </li>
+                <li class="bg-white font-mono rounded-lg shadow-lg p-4">
+                    <span class="font-mono">Gender:</span> {{ user_profile.gender }}
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Edit Profile Button -->
+        <div class="flex justify-center">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Ad a Review</button>
         </div>
     </div>
-    
 
 
-    
-    <!-- Personal Information Section -->
-    <div class="mb-6">
-        <h2 class="text-xl font-bold mb-2">Personal Information</h2>
-        <ul class="grid grid-cols-2 gap-4">
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Location:</span> {{ user_profile.location }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Phone Number:</span> {{ user_profile.phone_number }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Blood Group:</span> {{ user_profile.blood_group }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Age:</span> {{ user_profile.age }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Gender:</span> {{ user_profile.gender }}
-            </li>
-        </ul>
-    </div>
-    
-    <!-- Edit Profile Button -->
-    <div class="flex justify-center">
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Edit Profile</button>
-    </div>
+
+
+
 </div>
+
+<script>
+    lsit =  document.querySelector(".profile").classList.add('sidebar-list-item-cus');
+    
+</script>
+
+
 
 
 {% endblock content %}

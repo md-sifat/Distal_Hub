@@ -1,50 +1,77 @@
+<!-- appointment_page.html -->
+
 {% extends "patient/base_d.html" %}
 {% load static %}
 {% block content %}
 
-<div class="max-w-3xl mx-auto p-6">
-    <!-- Profile Picture, Name, and Bio Section -->
-    <div class="flex items-center mb-6">
-        <div class="w-20 h-20 rounded-full overflow-hidden">
-            <img src="{{ user_profile.img.url }}" alt="Profile Picture" class="w-full h-full object-cover">
+<form method="POST" >
+    {% csrf_token %}
+    <div class=" container">
+        <div id="dcards" class=" w-full h-full flex flex-col justify-around">
+            <div class=" flex justify-around mb-14" id="next-1">
+            <h1 class="text-3xl font-semibold mb-6 mt-6 ml-6 text-center">Select Your Desired Consultant : </h1>
+            <div class="m-6 px-6 py-2 center bg-blue-500 hover:bg-blue-600 text-white font-bold  rounded-md">Next</div>
         </div>
-
-        <div class="ml-4 border-l-2 border-gray-300 pl-4">
-            <h1 class="text-3xl font-bold">{{ user_profile.firstname }} {{ user_profile.lastname }}</h1>
-            <p class="text-gray-600">{{ user_profile.aboutme }}</p>
+            <div class=" w-full h-full flex flex-wrap justify-around align-middle" >
+                <!-- Doctor Profile Cards -->
+                <!-- Replace this with actual doctor profile cards -->
+                {% for doctor in doctors %}
+                <label class=" " >
+                    <div class=" bg-white border m-6 border-blue-950  rounded-lg shadow-lg w-64 h-80 p-4 flex flex-col justify-center items-center">
+                        <!-- Profile Picture Section -->
+                        <div class="w-28 h-28 rounded-full overflow-hidden mb-2">
+                            <img src="{{ doctor.img.url }}" alt="Profile Picture" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Name -->
+                        <h2 class="text-lg font-semibold mb-1">{{ doctor.firstname }} {{ doctor.lastname }}</h2>
+                        <!-- Specialization -->
+                        <p class="text-base text-gray-600 mb-1">{{ doctor.specialization }}</p>
+                        <!-- Experience -->
+                        <p class="text-sm text-gray-600 mb-1">Experience: {{ doctor.experience }} years</p>
+                        <!-- Medical College -->
+                        <p class="text-sm text-gray-600 mb-1">Medical College: {{ doctor.medical_college }}</p>
+                        <!-- Additional Details -->
+                        <p class="text-sm text-gray-600 mb-1">Additional Details: {{ doctor.additional_details }}</p>
+                        <!-- Radio Button -->
+                        <input type="radio" class="rounded-full w-6 h-6" name="selected_card" value={{doctor.serialno}}>
+                    </div>
+                </label>
+                {% endfor %}    
+            </div>   
         </div>
+            <!-- Next Button -->
+            <!-- Appointment Description -->
+            <div id="step-2" class="hidden mt-8 mx-11 flex flex-col w-full h-full">
+                <h2 class="text-2xl font-semibold mb-4">Describe Your Problem</h2>
+                <textarea name = "problemInfo" id="problem-description" class="w-3/5 h-40 rounded-md border p-4" rows="4" placeholder="Enter your problem description"></textarea>
+                <!-- Appointment Time Selection -->
+                <div id="step-3" class="hidden mt-24 flex flex-col">
+                    <h2 class="text-2xl font-semibold mb-4">Select Desired Time</h2>
+                    <input name = "desireDate" id="appointment-time" type="datetime-local" class="w-3/5 rounded-md border p-4" placeholder="Select desired time">
+                    <!-- Submit Button -->
+                    <button id="submit" type="submit" class=" w-28 mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Submit</button>
+                </div>
+            </div>
     </div>
-    
+
+</form>
+    <!-- JavaScript to handle steps -->
+    <script>
+        // Get the current date and time in ISO format
+        const currentDate = new Date().toISOString().slice(0, 16); // Remove seconds and milliseconds
+        // Set the min attribute of the input field to the current date and time
+        document.getElementById('appointment-time').min = currentDate;
+        // Show/hide steps on button click
+        document.getElementById('next-1').addEventListener('click', function() {
+            document.getElementById('step-2').classList.remove('hidden');
+            document.getElementById('dcards').classList.add('hidden');
+            document.getElementById('next-1').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+        });
+
+        lsit =  document.querySelector(".appnt").classList.add('sidebar-list-item-cus');
 
 
-    
-    <!-- Personal Information Section -->
-    <div class="mb-6">
-        <h2 class="text-xl font-bold mb-2">Personal Information</h2>
-        <ul class="grid grid-cols-2 gap-4">
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Location:</span> {{ user_profile.location }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Phone Number:</span> {{ user_profile.phone_number }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Blood Group:</span> {{ user_profile.blood_group }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Age:</span> {{ user_profile.age }}
-            </li>
-            <li class="bg-white rounded-lg shadow-lg p-4">
-                <span class="font-semibold">Gender:</span> {{ user_profile.gender }}
-            </li>
-        </ul>
-    </div>
-    
-    <!-- Edit Profile Button -->
-    <div class="flex justify-center">
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Edit Profile</button>
-    </div>
-</div>
 
-
-{% endblock content %}
+    </script>
+{% endblock %}

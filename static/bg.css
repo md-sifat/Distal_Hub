@@ -1,0 +1,60 @@
+.bg-home{
+    background: #5e8198;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+} 
+
+.bg-card1{
+    background: #44A08D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #148284, #148284); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+input[type="text"].cus {
+    width: 100%;
+    background-color: #e0e0e0; /* Use your desired background color */
+    padding: 0.75rem; /* Adjust padding as needed */
+    border: none; /* Remove default borders */
+    border-bottom: 2px solid #333; /* Add bottom border */
+    border-radius: 0; /* Ensure no border radius */
+    outline: none; /* Remove outline on focus */
+}
+
+/* Style for when the input field is focused */
+input[type="text"].cus:focus {
+    border-bottom: 2px solid #007bff; /* Change border color when focused */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="search"],
+input[type="url"] {
+    width: 100%;
+    background-color: #e0e0e0; /* Use your desired background color */
+    padding: 0.75rem; /* Adjust padding as needed */
+    border: none; /* Remove default borders */
+    border-bottom: 2px solid #333; /* Add bottom border */
+    border-radius: 0; /* Ensure no border radius */
+    outline: none; /* Remove outline on focus */
+}
+
+/* Style for when the input field is focused */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus {
+    border-bottom: 2px solid #007bff; /* Change border color when focused */
+}
