@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # database model for patient data 
 
 class UserProfile(models.Model):
