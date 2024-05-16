@@ -8,14 +8,14 @@
     <title>Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-200">
 
 <!-- Profile Section -->
 <div class="container mx-auto px-4 py-4 flex justify-between">
     <div class="items-center ">
-        <!-- Profile Image (Replace with your image URL) -->
-        <img src={% static "img.jpg" %} alt="Profile Image" class="w-20 h-20 rounded-full">
-        <!-- Profile Name (Replace with your name) -->
+        <a href={% url 'home' %} >
+            <img src={% static "home-page.png" %} alt="Logo" class="w-20 h-20 rounded-full mr-2">
+        </a>
     </div>
     <div>
         <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full">
@@ -28,13 +28,13 @@
 <!-- Logo Section -->
 <div class="container mx-auto px-4  text-center ">
     <!-- Logo (Replace with your logo image URL) -->
-    <img src={% static "img.jpg" %} alt="Logo" class="w-40 mx-auto mb-8">
+    <img src={% static "img.jpg" %} alt="Logo" class="w-52 mx-auto rounded-full">
     <h1 class="text-4xl font-semibold mb-10 ">Welcome to Distal Hub</h1>
     <!-- Welcome Title -->
     <!-- Buttons -->
 
     <div class="flex justify-center mb-8 align-center">
-        <span class="text-2xl font-bold mr-3 my-3 px-5">I am a :</span>
+        <span class="text-2xl font-bold mr-3 my-3 px-5"></span>
         <a href={% url "psign" %} class="bg-blue-500 hover:bg-blue-600 text-white text-1xl font-bold py-5 px-16 rounded-full mr-10">Patient</a>
         <a href={% url "dsign" %} class="bg-green-500 hover:bg-green-600 text-white font-bold py-5 px-16 rounded-full mr-10">Doctor</a>
     </div>

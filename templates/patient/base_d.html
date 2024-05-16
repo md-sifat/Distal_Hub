@@ -27,9 +27,12 @@
             <div class="sidebar-title">
                 <div class="sidebar-brand">
                   <div class="c805" >
-                    <a href= {% url 'pdash' %} >
+                    {% comment %} <a href= {% url 'pdash' %} >
                       <span  class="material-icons-outlined">mood</span> Home
-                    </a>
+                    </a> {% endcomment %}
+                    <a href={% url 'home' %} >
+                      <img src={% static "img.jpg" %} alt="Logo" class="w-20 h-20 rounded-full ">
+                  </a>
                   </div>
                 </div>
                 <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
@@ -42,7 +45,7 @@
                   </a>
                 </li>
                 <li class="sidebar-list-item">
-                  <a href="#">
+                  <a href={% url 'appnt' %}>
                     <span class="material-icons-outlined">library_books</span> Appointment
                   </a>
                 </li>

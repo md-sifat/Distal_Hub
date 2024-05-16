@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     firstname = models.CharField(max_length=100 , default='Firstname')
     lastname = models.CharField(max_length=100 , default='Lastname')
     aboutme = models.TextField(max_length= 200 , default='Your Bio Is Empty')
-    img = models.ImageField(upload_to='user_image/' ,  default='user_image/default.jpg')
+    img = models.ImageField(upload_to='user_image/' ,  default='user_image/img2.jpg')
     
     def __str__(self):
         return self.username
@@ -47,7 +47,7 @@ class DoctorProfile(models.Model):
     firstname = models.CharField(max_length=100 , default='Firstname')
     lastname = models.CharField(max_length=100 , default='Lastname')
     aboutme = models.TextField(max_length= 200 , default='Your Bio Is Empty')
-    img = models.ImageField(upload_to='user_image/' ,  default='user_image/default.jpg')
+    img = models.ImageField(upload_to='user_image/' ,  default='user_image/img2.jpg')
     
     def __str__(self):
         return self.serialno

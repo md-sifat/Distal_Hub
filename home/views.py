@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect 
 from home.models import UserProfile , DoctorProfile
 
+
 # Create your views here.
 # this is homepage rendering function
 def home(request):
@@ -31,8 +32,10 @@ def psign(request):
 def psugn(request):
     if request.method == 'POST':
         username = request.POST.get('username')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
         if(UserProfile.objects.filter(username=username).exists()):
-            return render(request , 'patient/sign_up.html' , {'error_message': 'Invalid username or password'})
+            return render(request , 'patient/sign_up.html' , {'error_message': 'username already exits'})
         else:
             email = request.POST.get('email')
             age = request.POST.get('age')
@@ -41,8 +44,9 @@ def psugn(request):
             location = request.POST.get('location')
             password = request.POST.get('password')
             gender = request.POST.get('gender')
+            # img = request.FILES.get('image')
 
-            user_profile = UserProfile(username=username,email=email,age=age,blood_group=blood_group,phone_number=phone_number,location=location,password=password,gender=gender)
+            user_profile = UserProfile(username=username,firstname=firstname,lastname=lastname , email=email,age=age,blood_group=blood_group,phone_number=phone_number,location=location,password=password,gender=gender)
             user_profile.save()
             return redirect('psign')
     else:
@@ -107,10 +111,6 @@ def dsugn(request):
 
             doctor_profile = DoctorProfile(serialno=serialno,email=email,age=age,blood_group=blood_group,phone_number=phone_number,location=location,password=password,gender=gender)
             doctor_profile.save()
-            return redirect('dsign')
-
-
-
-        
+            return redirect('dsign')    
     else:
         return render(request, 'doctor/sign_up.html')
