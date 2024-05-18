@@ -7,6 +7,8 @@ from home.models import UserProfile , DoctorProfile
 def home(request):
     if request.session.get('loggedIn'):
         return redirect(pdash)
+    elif request.session.get('loggedIn_d'):
+        return redirect(ddash)
     else:
         return render(request , 'index.html')
 
@@ -52,9 +54,8 @@ def psugn(request):
     else:
         return render(request, 'patient/sign_up.html')
 
+
 # this is patient dahsboard rendering function 
-
-
 
 def pdash(request):
     if request.session.get('loggedIn'):
@@ -70,6 +71,7 @@ def pdash(request):
 # patient dashboardlogout function 
 def logout(request):
     request.session['loggedIn']=False
+    request.session['loggedIn_d']=False
     return redirect(home)
 
 
@@ -86,9 +88,9 @@ def dsign(request):
         except DoctorProfile.DoesNotExist:
             return render(request , 'doctor/sign_in.html' , {'error_message': 'Invalid serial no or password'})
         if doctor_profile.password == password:
-            request.session['loggedIn']=True
+            request.session['loggedIn_d']=True
             request.session['serialno']=serialno
-            return redirect('pdash')
+            return redirect('ddash')
         else:
             return render(request , 'doctor/sign_in.html' , {'error_message': 'Invalid serial no or password'})
     else:
@@ -117,3 +119,16 @@ def dsugn(request):
             return redirect('dsign')    
     else:
         return render(request, 'doctor/sign_up.html')
+
+# this is patient dahsboard rendering function 
+
+def ddash(request):
+    if request.session.get('loggedIn_d'):
+        serialno = request.session['serialno']
+        try:
+            doctor_profile = DoctorProfile.objects.get(serialno = serialno)
+            return render(request , 'doctor/dashboard.html' , {'doctor_profile':doctor_profile})
+        except UserProfile.DoesNotExist:
+             return render(request, 'doctor/dashboard.html', {'error_message': 'Doctor profile not found'})
+    else:
+        return redirect('dsign')

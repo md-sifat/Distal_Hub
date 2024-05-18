@@ -1,0 +1,38 @@
+<!-- appointment_page.html -->
+
+{% extends "doctor/base_d.html" %}
+{% load static %}
+{% block content %}
+
+<form method="POST" >
+    {% csrf_token %}
+    <div class=" container">
+        <div id="dcards" class=" w-full h-full flex flex-col justify-around">
+            <div class=" flex justify-around mb-14" id="next-1">
+            <h1 class="text-3xl font-semibold mb-6 mt-6 ml-6 text-center">You Got new Appoinment Request : </h1>
+        </div>
+
+        <div class="appointment-requests">
+            {% for appointment in pending_appnt %}
+            <div class="appointment-request p-4 m-4 border rounded-lg">
+                <h2>Patient: {{ appointment.username }}</h2>
+                <p>Problem: {{ appointment.problemInfo }}</p>
+                <p>Desired Date: {{ appointment.desireDate }}</p>
+                <form method="POST" action="{% url 'handle_appointment' appointment.username appointment.serialno appointment.problemInfo appointment.desireDate %}">
+                    {% csrf_token %}
+                    <button name="action" value="accept" type="submit">Accept</button>
+                    <button name="action" value="reject" type="submit">Reject</button>
+                </form>
+            </div>
+            {% endfor %}
+            <!-- Next Button -->
+            <!-- Appointment Description -->
+            
+
+
+
+    </div>
+
+</form>
+    
+{% endblock %}

@@ -5,7 +5,9 @@ urlpatterns = [
     path('pdash/' , views.pdash , name = 'pdash'),
     path('logout/' , views.logout , name = 'logout'),
     path('pprofile/' , views.pprofile , name = 'pprofile'),
-    path('appnt/' ,  include('appointment.urls'))
+    path('dprofile/' , views.dprofile , name = 'dprofile'),
+    path('appnt/' ,  include('appointment.urls')),
+    path('appnt_d/' ,  include('appointment.urls'))
 
 
 ]

@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={% static "bg.css" %}>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href={% static "style.css" %}>
+  </head>
+  <body>
+    <div class="container">
+
+        <div class="right_side fixed">
+
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                  <div class="ml-9" >
+                    {% comment %} <a href= {% url 'pdash' %} >
+                      <span  class="material-icons-outlined">mood</span> Home
+                    </a> {% endcomment %}
+                    <a href={% url 'home' %} >
+                      <img src={% static "img.jpg" %} alt="Logo" class="w-20 h-20  rounded-full ">
+                  </a>
+                  </div>
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+              </div>
+      
+              <ul class="sidebar-list">
+                <a href=  {% url 'dprofile' %} >
+                    <li class="sidebar-list-item text-white font-mono profile">
+                    <span class="material-icons-outlined ">account_circle</span> Profile
+                  </li>
+                </a>
+                <a href={% url 'appnt_d' %}>
+                    <li class="sidebar-list-item  text-white font-mono appnt">
+                    <span class="material-icons-outlined">library_books</span> Appointment
+                  </li>
+                  </a>
+                  <a href="#">
+                    <li class="sidebar-list-item  text-white font-mono">
+                      <span class="material-icons-outlined">badge</span> Credits
+                    </li>
+                  </a>
+                  <a href="#">
+                    <li class="sidebar-list-item  text-white font-mono">
+                    <span class="material-icons-outlined">phone</span> Support
+                  </li>
+                  </a>
+                  <a href="#">
+                    <li class="sidebar-list-item  text-white font-mono">
+                    <span class="material-icons-outlined">notifications</span> Notifications
+                  </li>
+                  </a>
+                  <a href="#">
+                    <li class="sidebar-list-item  text-white font-mono">
+                    <span class="material-icons-outlined">poll</span> Records
+                  </li>
+                  </a>
+                  <a href= {% url "logout" %} >
+                    <li class="sidebar-list-item  text-white font-mono" href =  "#" >
+                    <span class="material-icons-outlined">logout</span> Log Out
+                  </li>
+                  </a>
+              </ul>
+
+
+        </div>
+        <div class="bg-gray-200 main ">
+          {% block content %}{% endblock content %}
+
+        </div>
+
+
+
+
+    </div>
+
+      
+
+  </body>
+</html>
