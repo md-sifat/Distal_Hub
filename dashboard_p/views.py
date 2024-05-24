@@ -26,3 +26,7 @@ def dprofile(request):
              return render(request, 'doctor/profile.html', {'error_message': 'User profile not found'})
     else:
         return redirect('ddash')
+
+
+def pdoctor(request):
+    return render(request , 'appnt/doctor_list.html')

@@ -15,6 +15,7 @@ def appnt(request):
             problemInfo = request.POST.get('problemInfo')
             desireDate = request.POST.get('desireDate')
             new_appnt = Appnt_info(serialno = serialno , username=username , problemInfo = problemInfo , desireDate = desireDate)
+
             new_appnt.save()
             return redirect('pdash')
         else:
@@ -25,11 +26,13 @@ def appnt(request):
     
 def appnt_d(request):
     if request.session.get('loggedIn_d'):
-        pending_appnt = Appnt_info.objects.filter(serialno=request.session['serialno'], status='pending')
+        pending_appnt = []
+        tmp = Appnt_info.objects.get(serialno = "hidden")
+        pending_appnt.append(tmp)
+        pending_appnt += Appnt_info.objects.filter(serialno=request.session['serialno'], status='pending')
         accept_appnt = Appnt_info.objects.filter(serialno=request.session['serialno'], status='accepted')
         reject_appnt = Appnt_info.objects.filter(serialno=request.session['serialno'], status='rejected')
         return render(request , 'appnt/appnt_d.html' , {'pending_appnt' : pending_appnt , 'accept_appnt' : accept_appnt , 'reject_appnt':reject_appnt})
-
     else:
         return redirect('ddash')
 

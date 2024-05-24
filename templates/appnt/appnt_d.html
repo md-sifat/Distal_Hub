@@ -8,26 +8,56 @@
     {% csrf_token %}
     <div class=" container">
         <div id="dcards" class=" w-full h-full flex flex-col justify-around">
-            <div class=" flex justify-around mb-14" id="next-1">
+            {% comment %} <div class=" flex justify-around mb-14" id="next-1">
             <h1 class="text-3xl font-semibold mb-6 mt-6 ml-6 text-center">You Got new Appoinment Request : </h1>
-        </div>
+            </div> {% endcomment %}
 
         <div class="appointment-requests">
             {% for appointment in pending_appnt %}
-            <div class="appointment-request p-4 m-4 border rounded-lg">
-                <h2>Patient: {{ appointment.username }}</h2>
-                <p>Problem: {{ appointment.problemInfo }}</p>
-                <p>Desired Date: {{ appointment.desireDate }}</p>
+                <div class="bg-white shadow-md rounded-lg p-6 m-4">
+                    {% if appointment.username != "hidden" %}
+                    <h2 class="text-xl font-semibold mb-2">Patient: {{ appointment.username }}</h2>
+                    <p class="text-gray-700 mb-2">Problem: {{ appointment.problemInfo }}</p>
+                    <p class="text-gray-700 mb-2">Desired Date: {{ appointment.desireDate }}</p>
+                    {%else%}
+                    <div class="text-xl font-semibold mb-2" > For all your new Appointment Request you can select these Two option : </div>
+                    {% endif %}
                 <form method="POST" action="{% url 'handle_appointment' appointment.username appointment.serialno appointment.problemInfo appointment.desireDate %}">
                     {% csrf_token %}
-                    <button name="action" value="accept" type="submit">Accept</button>
-                    <button name="action" value="reject" type="submit">Reject</button>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mr-2" name="action" value="accept" type="submit">Accept</button>
+                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md" name="action" value="reject" type="submit">Reject</button>
                 </form>
             </div>
             {% endfor %}
-            <!-- Next Button -->
-            <!-- Appointment Description -->
-            
+        </div>
+        <div class="text-xl font-semibold m-4" > 
+            Rejected Request: 
+        </div>
+        <div class="appointment-requests">
+            {% for appointment in reject_appnt %}            
+            <div class="bg-white shadow-md rounded-lg p-6 m-4">
+                <h2 class="text-xl font-semibold mb-2">Patient: {{ appointment.username }}</h2>
+                <p class="text-gray-700 mb-2">Problem: {{ appointment.problemInfo }}</p>
+                <p class="text-gray-700 mb-2">Desired Date: {{ appointment.desireDate }}</p>
+                <div class="w-24 bg-red-600  hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md" name="action" value="reject" type="submit">Rejected</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-xl font-semibold m-4" > 
+            Accepted Request: 
+        </div>
+        <div class="appointment-requests">
+            {% for appointment in accept_appnt %}
+            <div class="bg-white shadow-md rounded-lg p-6 m-4">
+                <h2 class="text-xl font-semibold mb-2">Patient: {{ appointment.username }}</h2>
+                <p class="text-gray-700 mb-2">Problem: {{ appointment.problemInfo }}</p>
+                <p class="text-gray-700 mb-2">Desired Date: {{ appointment.desireDate }}</p>
+                <div class="w-24 bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mr-2" name="action" value="accept" type="submit">Accepted</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        
 
 
 
