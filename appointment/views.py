@@ -47,3 +47,5 @@ def handle_appointment(request, username, serialno, problem_info, desire_date):
             appointment.status = 'rejected'
         appointment.save()
         return redirect('appnt_d')
+    
+    

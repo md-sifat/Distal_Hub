@@ -8,7 +8,11 @@ urlpatterns = [
     path('dprofile/' , views.dprofile , name = 'dprofile'),
     path('appnt/' ,  include('appointment.urls')),
     path('appnt_d/' ,  include('appointment.urls')),
-    path('pdoctors/' , views.pdoctor , name='pdoctor')
-
+    path('pdoctors/' , views.pdoctor , name='pdoctor'),
+    path('precords/' , views.precords , name='precords'),
+    path('drecords/' , views.drecords , name='drecords'),
+    path('dupcoming/' , views.dupcoming , name='dupcoming'),
+    path('dcontact/' , views.dcontact , name='dcontact'),
+    path('pcontact/' , views.pcontact , name='pcontact'),
 
 ]

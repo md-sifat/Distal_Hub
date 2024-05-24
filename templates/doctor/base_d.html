@@ -40,35 +40,31 @@
       
               <ul class="sidebar-list">
                 <a href=  {% url 'dprofile' %} >
-                    <li class="sidebar-list-item text-white font-mono profile">
+                    <li class="sidebar-list-item text-white font-mono dprofile">
                     <span class="material-icons-outlined ">account_circle</span> Profile
                   </li>
                 </a>
                 <a href={% url 'appnt_d' %}>
-                    <li class="sidebar-list-item  text-white font-mono appnt">
+                    <li class="sidebar-list-item  text-white font-mono appnt_d">
                     <span class="material-icons-outlined">library_books</span> Appointment
                   </li>
                   </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
-                      <span class="material-icons-outlined">badge</span> Credits
+                  <a href={% url 'dupcoming' %}>
+                    <li class="sidebar-list-item  text-white font-mono dupcoming">
+                      <span class="material-icons-outlined">badge</span> Upcoming Appnt
                     </li>
                   </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
-                    <span class="material-icons-outlined">phone</span> Support
-                  </li>
-                  </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
-                    <span class="material-icons-outlined">notifications</span> Notifications
-                  </li>
-                  </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
+                  <a href={% url 'drecords' %}>
+                    <li class="sidebar-list-item  text-white font-mono drecords">
                     <span class="material-icons-outlined">poll</span> Records
                   </li>
                   </a>
+                  <a href={% url 'dcontact' %}>
+                    <li class="sidebar-list-item  text-white font-mono dcontact">
+                    <span class="material-icons-outlined">phone</span> Support
+                  </li>
+                  </a>
+                  
                   <a href= {% url "logout" %} >
                     <li class="sidebar-list-item  text-white font-mono" href =  "#" >
                     <span class="material-icons-outlined">logout</span> Log Out
@@ -92,3 +88,7 @@
 
   </body>
 </html>
+
+<script>
+  lsit =  document.querySelector(".profile").classList.add('sidebar-list-item-cus');
+</script>

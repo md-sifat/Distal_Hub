@@ -1,46 +1,96 @@
 {% extends "patient/base_d.html" %}
-
+{% load static %}
 {% block content %}
-<div class="bg-gray-200 w-full h-full">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+<div class="bg-gray-200 w-full h-full font-mono">
     <main class="main-container bg-slate-500 ">
         <div class="flex justify-center flex-col mx-auto px-4 py-8 text-center ">
             <h1 class="text-3xl w-full font-bold mb-4">HI, {{user_profile.firstname}}! <br> Welcome to Distal Hub </h1>
             <div class="flex justify-center flex-wrap mb-8">
-                <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 200px;">
-                    <h2 class="text-lg font-semibold mb-2">Achievement 1</h2>
-                    <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 250px;">
+                    
+                    <h2 class="text-gray-700 text-3xl "><span class="material-symbols-outlined">
+                        person_add
+                    </span> {{user_count}}</h2> <br>
+                    <h2 class="text-lg font-semibold mb-2">Total User</h2>
                 </div>
                 <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 200px;">
-                    <h2 class="text-lg font-semibold mb-2">Achievement 2</h2>
-                    <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    
+                    <h2 class="text-gray-700 text-3xl "><span class="material-symbols-outlined">
+                        shield_person
+                    </span> {{doctor_count}}</h2> <br>
+                    <h2 class="text-lg font-semibold mb-2">Total Registed Consultant</h2>
                 </div>
                 <div class="bg-white shadow-md rounded-lg p-6 m-2" style="width: 200px;">
-                    <h2 class="text-lg font-semibold mb-2">Achievement 3</h2>
-                    <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h2 class="text-gray-700 text-3xl "><span class="material-symbols-outlined">
+                            event_note
+                            </span> {{appnt_count}}</h2><br>
+                    <h2 class="text-lg font-semibold mb-2">Total Appointment schedule</h2>
                 </div>
             </div>
         
+
+
         <!-- User Reviews Section -->
         <h2 class="text-2xl font-semibold mb-4">User Reviews</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <!-- Review 1 -->
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h3 class="text-lg font-semibold mb-2">User 1</h3>
-                <p class="text-gray-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+          <div class="max-w-sm w-full lg:max-w-full lg:flex">
+            <div class="flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://via.placeholder.com/150')" title="Profile picture">
             </div>
+            <div class="border-r border-b border-l border-gray-600 lg:border-l-0 lg:border-t lg:border-gray-600 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                
+                <div class="text-gray-900 font-bold text-xl mb-2"> Jane Doe</div>
+                <p class="text-gray-700 text-base">This is an example review. The user shares their experience and feedback about a product or service here. The review can be as detailed as necessary to convey the user's thoughts.</p>
+              </div>
+              <div class="flex items-center">
+                <img class="w-10 h-10 rounded-full mr-4" src={% static "img5.jpg" %} alt="Profile picture">
+                <div class="text-sm">
+                  <p class="text-gray-900 leading-none">2 hours ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Review 2 -->
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h3 class="text-lg font-semibold mb-2">User 2</h3>
-                <p class="text-gray-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+          <div class="max-w-sm w-full lg:max-w-full lg:flex">
+            <div class="flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://via.placeholder.com/150')" title="Profile picture">
             </div>
+            <div class="border-r border-b border-l border-gray-600 lg:border-l-0 lg:border-t lg:border-gray-600 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">Zakir Hossain</div>
+                <p class="text-gray-700 text-base">This is an example review. The user shares their experience and feedback about a product or service here. The review can be as detailed as necessary to convey the user's thoughts.</p>
+              </div>
+              <div class="flex items-center">
+                <img class="w-10 h-10 rounded-full mr-4" src={% static "img6.jpg" %} alt="Profile picture">
+                <div class="text-sm">
+                  <p class="text-gray-900 leading-none">10 hours ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Review 3 -->
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h3 class="text-lg font-semibold mb-2">User 3</h3>
-                <p class="text-gray-700">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+          <div class="max-w-sm w-full lg:max-w-full lg:flex">
+            <div class="flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://via.placeholder.com/150')" title="Profile picture">
             </div>
-        </div>
-        </div>
-        </main>
+            <div class="border-r text-black border-b border-l border-gray-600 lg:border-l-0 lg:border-t lg:border-gray-600 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+               
+                <div class="text-gray-900 font-bold text-xl mb-2">Steve Job</div>
+                <p class="text-gray-700 text-base">As a general practitioner, managing my appointment schedule efficiently while providing quality. Since integrating this appointment management system into my practice, I have experienced a significant improvement in both these areas.</p>
+              </div>
+              <div class="flex items-center">
+                <img class="w-10 h-10 rounded-full mr-4" src={% static "img7.jpg" %} alt="Profile picture">
+                <div class="text-sm">
+                  <p class="text-gray-900 leading-none">2 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+</div>
+</main>
 
 
 </div>

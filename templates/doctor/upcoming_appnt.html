@@ -1,0 +1,70 @@
+<!-- appointment_page.html -->
+
+{% extends "doctor/base_d.html" %}
+{% load static %}
+{% block content %}
+
+<form method="POST" >
+    {% csrf_token %}
+    <div class=" container">
+        <div id="dcards" class=" w-full h-full flex flex-col justify-around">
+            <div class=" flex justify-around mb-14" id="next-1">
+            <h1 class="text-3xl font-mono font-semibold  mt-6 ml-6 text-center">Your upcoming Appointment schedule : </h1>
+            </div> 
+        
+        <div class="appointment-requests">
+            {% for post in upcoming %}
+                <div class="bg-white shadow-md rounded-lg p-6 m-4">
+                    <h2 class="text-xl font-mono font-semibold mb-2">Patient: {{ post.username }}</h2>
+                    <h2 class="text-xl font-mono font-semibold mb-2">Consultant: {{ post.serialno }}</h2>
+                    <p class="text-gray-700 font-mono mb-2">Problem: {{ post.problemInfo }}</p>
+
+                    <p id="timer-{{ post.id }}" class="text-lg text-3xl text-red-500 font-bold font-mono"></p>
+                    <script> 
+                        (function() {
+                            var eventDate = new Date("{{ post.desireDate|date:'Y-m-d H:i:s' }}").getTime();
+                            var timerId = "timer-{{ post.id }}";
+
+                            function updateTimer() {
+                                var now = new Date().getTime();
+                                var distance = eventDate - now;
+
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                document.getElementById(timerId).innerHTML = days + "d " + hours + "h " 
+                                    + minutes + "m " + seconds + "s ";
+
+                                if (distance < 0) {
+                                    clearInterval(x);
+                                    document.getElementById(timerId).innerHTML = "EXPIRED";
+                                }
+                            }
+
+                            updateTimer();
+                            var x = setInterval(updateTimer, 1000);
+                        })();
+                    </script>
+
+                    <p class="text-gray-700 font-mono mb-2">Desired Date: {{ post.desireDate }}</p>
+                    {% if post.status == "pending" %}
+                        <div class="bg-gray-600 w-24    font-mono text-white font-bold py-2 px-4 rounded-md mr-2" name="action" value="accept" type="submit">Pending</div>
+                    {%elif post.status == "accepted"%}
+                        <div class="bg-blue-600 w-28  font-mono text-white font-bold py-2 px-4 rounded-md mr-2" name="action" value="accept" type="submit">Accepted</div>
+                    {%elif post.status == "rejected"%}
+                        <div class="bg-red-600 w-28 font-mono text-white font-bold py-2 px-4 rounded-md" name="action" value="reject" type="submit"> Rejected</div>
+                    {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</form>
+
+<script>
+    lsit =  document.querySelector(".dupcoming").classList.add('sidebar-list-item-cus');
+  </script>
+    
+{% endblock %}

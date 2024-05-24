@@ -1,5 +1,6 @@
 from django.shortcuts import render , redirect 
 from home.models import UserProfile , DoctorProfile
+from appointment.models import Appnt_info
 
 
 # Create your views here.
@@ -59,10 +60,14 @@ def psugn(request):
 
 def pdash(request):
     if request.session.get('loggedIn'):
+        user_count = UserProfile.objects.count()
+        doctor_count = DoctorProfile.objects.count()
+        appnt_count = Appnt_info.objects.count()
+        
         username = request.session['username']
         try:
             user_profile = UserProfile.objects.get(username = username)
-            return render(request , 'patient/dashboard.html' , {'user_profile':user_profile})
+            return render(request , 'patient/dashboard.html' , {'user_profile':user_profile , 'user_count' : user_count , 'doctor_count' : doctor_count , 'appnt_count' : appnt_count})
         except UserProfile.DoesNotExist:
              return render(request, 'patient/dashboard.html', {'error_message': 'User profile not found'})
     else:
@@ -124,10 +129,13 @@ def dsugn(request):
 
 def ddash(request):
     if request.session.get('loggedIn_d'):
+        user_count = UserProfile.objects.count()
+        doctor_count = DoctorProfile.objects.count()
+        appnt_count = Appnt_info.objects.count()
         serialno = request.session['serialno']
         try:
             doctor_profile = DoctorProfile.objects.get(serialno = serialno)
-            return render(request , 'doctor/dashboard.html' , {'doctor_profile':doctor_profile})
+            return render(request , 'doctor/dashboard.html' , {'doctor_profile':doctor_profile ,  'user_count' : user_count , 'doctor_count' : doctor_count , 'appnt_count' : appnt_count})
         except UserProfile.DoesNotExist:
              return render(request, 'doctor/dashboard.html', {'error_message': 'Doctor profile not found'})
     else:

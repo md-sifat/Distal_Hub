@@ -49,34 +49,29 @@
                     <span class="material-icons-outlined">library_books</span> Appointment
                   </li>
                   </a>
-                  <a href={%url 'pdoctor'%}>
-                    <li class="sidebar-list-item  text-white font-mono">
-                      <span class="material-icons-outlined">badge</span> Doctors
-                    </li>
-                  </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
-                    <span class="material-icons-outlined">phone</span> Support
-                  </li>
-                  </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
-                    <span class="material-icons-outlined">notifications</span> Notifications
-                  </li>
-                  </a>
-                  <a href="#">
-                    <li class="sidebar-list-item  text-white font-mono">
+                  <a href={%url 'precords'%}>
+                    <li class="sidebar-list-item  text-white font-mono precords">
                     <span class="material-icons-outlined">poll</span> Records
                   </li>
                   </a>
+                  <a href={%url 'pdoctor'%}>
+                    <li class="sidebar-list-item  text-white font-mono pdoctor">
+                      <span class="material-icons-outlined">badge</span> Doctors
+                    </li>
+                  </a>
+                  
+                  <a href={%url 'pcontact'%}>
+                    <li class="sidebar-list-item  text-white font-mono pcontact">
+                    <span class="material-icons-outlined">phone</span> Support
+                  </li>
+                  </a>
+                  
                   <a href= {% url "logout" %} >
                     <li class="sidebar-list-item  text-white font-mono" href =  "#" >
                     <span class="material-icons-outlined">logout</span> Log Out
                   </li>
                   </a>
               </ul>
-
-
         </div>
         <div class="bg-gray-200 main ">
           {% block content %}{% endblock content %}
